@@ -1,0 +1,50 @@
+$width: 100%;
+$column-gap: 20px;
+
+@mixin container($columns) {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(10px, 1fr) );
+  grid-template-rows: repeat(12, minmax(0, auto));
+  grid-column-gap: $column-gap;
+  width: $width;
+  margin: 0 auto;
+
+  @for $i from 1 through 12 {
+    .col-start-#{$i} {
+      grid-column-start: $i;
+    }
+
+    .row-start-#{$i} {
+      grid-row-start: $i;
+    }
+  }
+
+  @for $i from 2 through 13 {
+    .col-end-#{$i} {
+      grid-column-end: $i;
+    }
+
+    .row-end-#{$i} {
+      grid-row-end: $i;
+    }
+  }
+
+  .col-end {
+    grid-column-end: -1;
+  }
+  .row-end {
+    grid-row-end: -1;
+  }
+}
+
+.container-12 {
+  @include container(12);
+}
+
+.container-8 {
+  @include container(8);
+}
+
+.align-self-center {
+  align-self: center;
+}

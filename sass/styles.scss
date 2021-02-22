@@ -6,12 +6,10 @@ body {
 }
 
 .research-banner {
-  height: 39px;
   background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+  padding: 10px;
+  text-align: center;
+  color: #333;
 }
 
 header {
@@ -19,24 +17,56 @@ header {
   background-color: #22333b;
 }
 
-.header-item {
+%header-item {
   align-self: center;
-  height: 50%;
 }
 
-.header-end {
+.header-left {
+  @extend %header-item;
+  height: 46%;
+}
+
+.header-right {
+  @extend %header-item;
   justify-self: end;
   display: flex;
   align-items: center;
-}
+  color: white;
 
-.header-end > * {
-  height: 100%;
+  * {
+    margin-left: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .bell {
+    font-size: 19px;
+    padding: 6px;
+    border-radius: 4px;
+    background-color: #3a4950;
+  }
+
+  .user {
+    font-size: 39px;
+    color: #b1b1b1;
+  }
 }
 
 .tracks-banner {
   height: 34px;
   background-color: rgb(235, 235, 235);
+}
+
+.language-banner {
+  font-size: 12px;
+  color: #333;
+  text-decoration: underline solid #ccc;
+
+  &:hover {
+    text-decoration: underline solid #ccc;
+  }
 }
 
 .hero {
@@ -47,14 +77,19 @@ header {
 .banner-text {
   margin-top: 120px;
   color: #fff;
-
+    
   h1 {
+    margin-bottom: 5px;
     font-size: 40px;
     line-height: 40px;
+    font-weight: 600;
   }
 
   h4 {
+    max-width: 70%;
     font-size: 16px;
+    line-height: 21px;
+    font-weight: 400;
   }
 }
 
@@ -63,6 +98,29 @@ header {
   justify-content: space-between;
   align-items: baseline;
   margin-top: 30px;
+}
+
+.track-header {
+  h4 {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-bottom: 15px;
+  }
+
+  p {
+    margin-right: 20px;
+    color: #666;
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
+
+.fa-search {
+  position: absolute;
+    color: #c5c5c5;
+    font-size: 16px;
+    padding: 8px;
 }
 
 .language-search {
@@ -76,16 +134,20 @@ header {
   &:focus {
     outline: 1px solid #ddd;
   }
+
+  &::placeholder {
+    color: rgb(216, 216, 216);
+  }
 }
 
 .language-search-button {
-  border: 1px solid #ddd;
+  margin-left: 5px;
   padding: 7px 20px;
+  border: 1px solid #ddd;
   font-weight: 400;
   border-radius: 2px;
-  background: #f6f6f6;
   color: #666;
-  margin-left: 5px;
+  background: #f6f6f6;
 }
 
 main {
@@ -101,33 +163,33 @@ main {
 
 .track {
   height: 100px;
+  padding: 10px 0;
   border: 1px solid black;
   color: #333;
   text-decoration: none;
   border: 1px solid #c2c3c3;
   border-radius: 2px;
-  padding: 10px 0;
+
+  &:hover {
+    cursor: pointer;
+    border-color: #009cab;
+  }
 
   img {
     float: left;
     width: 30%;
     height: 100%;
-    // overflow: hidden;
     object-fit: contain;
   }
 
   h4 {
     padding-top: 12px;
     padding-bottom: 4px;
-    /* padding-bottom: 3px; */
-    /* font-family: Roboto; */
     font-size: 20px;
-    /* line-height: 25px; */
     font-weight: 500;
   }
 
   .progress {
-    // width: 100px;
     border: 1px solid #dcf2f3;
     padding: 4px 7px;
     display: inline-block;
@@ -138,12 +200,18 @@ main {
   }
 }
 
+.available-tracks .progress {
+  background-color: #f3f3f3;
+  border: none;
+}
+
 footer {
   background-color: #333;
   min-height: 300px;
 }
 
 .footer-cols {
+  margin-top: 70px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr) );
   grid-gap: 20px;
@@ -163,29 +231,43 @@ footer {
   h4 {
     font-size: 14px;
     font-weight: 600;
-    border-bottom: 1px solid rgb(180, 180, 180);
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      bottom: -7px;
+      right: 25px;
+      left: 25px;
+      border-bottom: 1px solid #616161;
+    }
   }
 
   a {
     display: inline-block;
     margin: 2px 0;
+    color: #ddd;
     font-size: 14px;
+    line-height: 25px;
+    text-decoration: none;
+    display: block;
   }
 }
 
 .social-icons {
-  padding: 50px 0 10px;
+  padding: 22px 0;
   text-align: center;
   color: white;
 
   i {
-    font-size: 24px;
-    padding: 10px;
+    font-size: 22px;
+    padding: 9px 12px;
     margin: 5px;
     border: 1px solid #565656;
-    border-radius: 2px;
-    background-color: #353535;
+    border-radius: 4px;
+    background-color: #383838;
 
     &:hover {
       cursor: pointer;
@@ -194,8 +276,9 @@ footer {
 }
 
 .footnote {
-  border-top: 1px solid white;
-  color: white;
+  padding-top: 5px;
+  border-top: 1px solid #656565;
+  color: #ddd;
   text-align: center;
 
   p {
@@ -208,5 +291,11 @@ footer {
 
   #copyright {
     float: right;
+    margin-left: 10px;
+
+    @media (max-width: 770px) {
+      float: none;
+      display: block;
+    }
   }
 }

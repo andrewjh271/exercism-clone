@@ -6,11 +6,10 @@ body {
 }
 
 .research-banner {
-  height: 39px;
   background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 10px;
+  text-align: center;
+  color: #333;
 }
 
 header {
@@ -18,24 +17,49 @@ header {
   background-color: #22333b;
 }
 
-.header-item {
+.header-right, .header-left {
   align-self: center;
-  height: 50%;
 }
 
-.header-end {
+.header-left {
+  height: 46%;
+}
+
+.header-right {
   justify-self: end;
   display: flex;
   align-items: center;
+  color: white;
 }
-
-.header-end > * {
-  height: 100%;
+.header-right * {
+  margin-left: 4px;
+}
+.header-right *:hover {
+  cursor: pointer;
+}
+.header-right .bell {
+  font-size: 19px;
+  padding: 6px;
+  border-radius: 4px;
+  background-color: #3a4950;
+}
+.header-right .user {
+  font-size: 39px;
+  color: #b1b1b1;
 }
 
 .tracks-banner {
   height: 34px;
   background-color: #ebebeb;
+}
+
+.language-banner {
+  font-size: 12px;
+  color: #333;
+  text-decoration: underline solid #ccc;
+}
+.language-banner:hover {
+  text-decoration: underline solid #ccc;
 }
 
 .hero {
@@ -48,11 +72,16 @@ header {
   color: #fff;
 }
 .banner-text h1 {
+  margin-bottom: 5px;
   font-size: 40px;
   line-height: 40px;
+  font-weight: 600;
 }
 .banner-text h4 {
+  max-width: 70%;
   font-size: 16px;
+  line-height: 21px;
+  font-weight: 400;
 }
 
 .flex-container {
@@ -60,6 +89,26 @@ header {
   justify-content: space-between;
   align-items: baseline;
   margin-top: 30px;
+}
+
+.track-header h4 {
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.track-header p {
+  margin-right: 20px;
+  color: #666;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.fa-search {
+  position: absolute;
+  color: #c5c5c5;
+  font-size: 16px;
+  padding: 8px;
 }
 
 .language-search {
@@ -73,15 +122,18 @@ header {
 .language-search:focus {
   outline: 1px solid #ddd;
 }
+.language-search::placeholder {
+  color: #d8d8d8;
+}
 
 .language-search-button {
-  border: 1px solid #ddd;
+  margin-left: 5px;
   padding: 7px 20px;
+  border: 1px solid #ddd;
   font-weight: 400;
   border-radius: 2px;
-  background: #f6f6f6;
   color: #666;
-  margin-left: 5px;
+  background: #f6f6f6;
 }
 
 main {
@@ -96,12 +148,16 @@ main {
 
 .track {
   height: 100px;
+  padding: 10px 0;
   border: 1px solid black;
   color: #333;
   text-decoration: none;
   border: 1px solid #c2c3c3;
   border-radius: 2px;
-  padding: 10px 0;
+}
+.track:hover {
+  cursor: pointer;
+  border-color: #009cab;
 }
 .track img {
   float: left;
@@ -112,10 +168,7 @@ main {
 .track h4 {
   padding-top: 12px;
   padding-bottom: 4px;
-  /* padding-bottom: 3px; */
-  /* font-family: Roboto; */
   font-size: 20px;
-  /* line-height: 25px; */
   font-weight: 500;
 }
 .track .progress {
@@ -128,12 +181,18 @@ main {
   color: #999;
 }
 
+.available-tracks .progress {
+  background-color: #f3f3f3;
+  border: none;
+}
+
 footer {
   background-color: #333;
   min-height: 300px;
 }
 
 .footer-cols {
+  margin-top: 70px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   grid-gap: 20px;
@@ -158,35 +217,49 @@ footer {
 .footer-cols h4 {
   font-size: 14px;
   font-weight: 600;
-  border-bottom: 1px solid #b4b4b4;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.footer-cols h4::after {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  bottom: -7px;
+  right: 25px;
+  left: 25px;
+  border-bottom: 1px solid #616161;
 }
 .footer-cols a {
   display: inline-block;
   margin: 2px 0;
+  color: #ddd;
   font-size: 14px;
+  line-height: 25px;
+  text-decoration: none;
+  display: block;
 }
 
 .social-icons {
-  padding: 50px 0 10px;
+  padding: 22px 0;
   text-align: center;
   color: white;
 }
 .social-icons i {
-  font-size: 24px;
-  padding: 10px;
+  font-size: 22px;
+  padding: 9px 12px;
   margin: 5px;
   border: 1px solid #565656;
-  border-radius: 2px;
-  background-color: #353535;
+  border-radius: 4px;
+  background-color: #383838;
 }
 .social-icons i:hover {
   cursor: pointer;
 }
 
 .footnote {
-  border-top: 1px solid white;
-  color: white;
+  padding-top: 5px;
+  border-top: 1px solid #656565;
+  color: #ddd;
   text-align: center;
 }
 .footnote p {
@@ -197,6 +270,13 @@ footer {
 }
 .footnote #copyright {
   float: right;
+  margin-left: 10px;
+}
+@media (max-width: 770px) {
+  .footnote #copyright {
+    float: none;
+    display: block;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

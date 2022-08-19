@@ -234,6 +234,7 @@ footer {
     margin-bottom: 20px;
     position: relative;
 
+    // line after footer headers
     &::after {
       content: "";
       position: absolute;
